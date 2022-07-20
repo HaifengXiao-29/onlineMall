@@ -1,13 +1,15 @@
 package com.example.backend;
 
 import com.example.backend.mapper.UserMapper;
-import com.example.backend.model.User;
+import com.example.backend.model.domain.User;
+import com.example.backend.service.UserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
+import javax.annotation.security.RunAs;
 import java.util.List;
 
 @SpringBootTest
@@ -15,13 +17,20 @@ import java.util.List;
 class BackEndApplicationTests {
 
   @Resource
-  private UserMapper userMapper;
+  private UserService userService;
 
   @Test
+  public void userTest() {
+    User user = new User();
+    user.setUsername("sfsd");
+    user.setGender(1);
+    user.setEmail("kdsaf");
+    user.setPassword("21313123");
+    userService.save(user);
+
+  }
+  @Test
   public void testSelect() {
-    System.out.println(("----- selectAll method test ------"));
-    List<User> userList = userMapper.selectList(null);
-    Assertions.assertEquals(5, userList.size());
-    userList.forEach(System.out::println);
+
   }
 }

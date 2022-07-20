@@ -1,7 +1,12 @@
 import Footer from '@/components/Footer';
 import { login } from '@/services/ant-design-pro/api';
-
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import {
+  AlipayCircleOutlined,
+  LockOutlined,
+  TaobaoCircleOutlined,
+  UserOutlined,
+  WeiboCircleOutlined,
+} from '@ant-design/icons';
 import { LoginForm, ProFormCheckbox, ProFormText } from '@ant-design/pro-components';
 import { Alert, message, Tabs } from 'antd';
 import React, { useState } from 'react';
@@ -43,10 +48,7 @@ const Login: React.FC = () => {
       // 登录
       const msg = await login({ ...values, type });
       if (msg.status === 'ok') {
-        const defaultLoginSuccessMessage = intl.formatMessage({
-          id: 'pages.login.success',
-          defaultMessage: '登录成功！',
-        });
+        const defaultLoginSuccessMessage = 'Login successfully';
         message.success(defaultLoginSuccessMessage);
         await fetchUserInfo();
         /** 此方法会跳转到 redirect 参数所在的位置 */
@@ -78,15 +80,20 @@ const Login: React.FC = () => {
         <LoginForm
           logo={<img alt="logo" src="/logo.svg" />}
           title="Ant Design"
-          submitter={{
-            searchConfig: {
-              submitText: 'Register',
-            },
-          }}
           subTitle={intl.formatMessage({ id: 'pages.layouts.userLayout.title' })}
           initialValues={{
             autoLogin: true,
           }}
+          actions={[
+            <FormattedMessage
+              key="loginWith"
+              id="pages.login.loginWith"
+              defaultMessage="其他登录方式"
+            />,
+            <AlipayCircleOutlined key="AlipayCircleOutlined" className={styles.icon} />,
+            <TaobaoCircleOutlined key="TaobaoCircleOutlined" className={styles.icon} />,
+            <WeiboCircleOutlined key="WeiboCircleOutlined" className={styles.icon} />,
+          ]}
           onFinish={async (values) => {
             await handleSubmit(values as API.LoginParams);
           }}
@@ -164,7 +171,7 @@ const Login: React.FC = () => {
             }}
           >
             <ProFormCheckbox noStyle name="autoLogin">
-              <FormattedMessage id="pages.login.rememberMe" defaultMessage="自动登录" />
+              Remember me
             </ProFormCheckbox>
             <a
               style={{

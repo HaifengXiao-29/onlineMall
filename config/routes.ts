@@ -14,6 +14,20 @@
     ],
   },
   {
+    path: '/user',
+    layout: false,
+    routes: [
+      {
+        name: 'register',
+        path: '/user/register',
+        component: './user/register',
+      },
+      {
+        component: './404',
+      },
+    ],
+  },
+  {
     path: '/welcome',
     name: 'welcome',
     icon: 'smile',

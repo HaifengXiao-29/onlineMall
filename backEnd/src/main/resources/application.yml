@@ -6,7 +6,7 @@ spring:
     url: jdbc:mysql://localhost:3306/mall
     username: root
     password: jia893607219
-
-
+  session:
+    timeout: 2000
 server:
   port: 8080
