@@ -22,9 +22,10 @@ class BackEndApplicationTests {
   @Test
   public void userTest() {
     User user = new User();
-    user.setUsername("sfsd");
+    user.setUsername("ad");
+    user.setUserAccount("12331223");
     user.setGender(1);
-    user.setEmail("kdsaf");
+    user.setEmail("wewer");
     user.setPassword("21313123");
     userService.save(user);
 
