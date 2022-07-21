@@ -74,7 +74,12 @@ const Login: React.FC = () => {
         <LoginForm
           logo={<img alt="logo" src="/logo.svg" />}
           title="Ant Design"
-          subTitle={intl.formatMessage({ id: 'pages.layouts.userLayout.title' })}
+          submitter={{
+            searchConfig: {
+              submitText: 'Register',
+            },
+          }}
+          subTitle={'Make Online Mall Great Again!'}
           initialValues={{
             autoLogin: true,
           }}

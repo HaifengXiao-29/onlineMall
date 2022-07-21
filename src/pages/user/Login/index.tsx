@@ -2,7 +2,7 @@ import Footer from '@/components/Footer';
 import { login } from '@/services/ant-design-pro/api';
 
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { LoginForm, ProFormCheckbox, ProFormText } from '@ant-design/pro-components';
+import { LoginForm, ProFormText } from '@ant-design/pro-components';
 import { Alert, message, Tabs } from 'antd';
 import React, { useState } from 'react';
 import { FormattedMessage, history, SelectLang, useIntl, useModel } from 'umi';
@@ -45,7 +45,7 @@ const Login: React.FC = () => {
       if (msg.status === 'ok') {
         const defaultLoginSuccessMessage = intl.formatMessage({
           id: 'pages.login.success',
-          defaultMessage: '登录成功！',
+          defaultMessage: 'Login Successfully！',
         });
         message.success(defaultLoginSuccessMessage);
         await fetchUserInfo();
@@ -62,7 +62,7 @@ const Login: React.FC = () => {
     } catch (error) {
       const defaultLoginFailureMessage = intl.formatMessage({
         id: 'pages.login.failure',
-        defaultMessage: '登录失败，请重试！',
+        defaultMessage: 'Login Failed! Please Try Again!',
       });
       message.error(defaultLoginFailureMessage);
     }
@@ -80,10 +80,10 @@ const Login: React.FC = () => {
           title="Ant Design"
           submitter={{
             searchConfig: {
-              submitText: 'Register',
+              submitText: 'Login',
             },
           }}
-          subTitle={intl.formatMessage({ id: 'pages.layouts.userLayout.title' })}
+          subTitle={'Make Online Mall Great Again!'}
           initialValues={{
             autoLogin: true,
           }}
@@ -96,7 +96,7 @@ const Login: React.FC = () => {
               key="account"
               tab={intl.formatMessage({
                 id: 'pages.login.accountLogin.tab',
-                defaultMessage: '账户密码登录',
+                defaultMessage: 'Account Password Login',
               })}
             />
           </Tabs>
@@ -105,7 +105,7 @@ const Login: React.FC = () => {
             <LoginMessage
               content={intl.formatMessage({
                 id: 'pages.login.accountLogin.errorMessage',
-                defaultMessage: '账户或密码错误(admin/ant.design)',
+                defaultMessage: 'username or password is incorrect(admin/ant.design)',
               })}
             />
           )}
@@ -119,7 +119,7 @@ const Login: React.FC = () => {
                 }}
                 placeholder={intl.formatMessage({
                   id: 'pages.login.username.placeholder',
-                  defaultMessage: '用户名: admin or user',
+                  defaultMessage: 'username: admin or user',
                 })}
                 rules={[
                   {
@@ -127,7 +127,7 @@ const Login: React.FC = () => {
                     message: (
                       <FormattedMessage
                         id="pages.login.username.required"
-                        defaultMessage="请输入用户名!"
+                        defaultMessage="Please enter username!"
                       />
                     ),
                   },
@@ -141,7 +141,7 @@ const Login: React.FC = () => {
                 }}
                 placeholder={intl.formatMessage({
                   id: 'pages.login.password.placeholder',
-                  defaultMessage: '密码: ant.design',
+                  defaultMessage: 'password: ant.design',
                 })}
                 rules={[
                   {
@@ -149,7 +149,7 @@ const Login: React.FC = () => {
                     message: (
                       <FormattedMessage
                         id="pages.login.password.required"
-                        defaultMessage="请输入密码！"
+                        defaultMessage="Please enter password！"
                       />
                     ),
                   },
@@ -163,15 +163,17 @@ const Login: React.FC = () => {
               marginBottom: 24,
             }}
           >
-            <ProFormCheckbox noStyle name="autoLogin">
-              <FormattedMessage id="pages.login.rememberMe" defaultMessage="自动登录" />
-            </ProFormCheckbox>
+            <a href="/user/register">
+              <FormattedMessage id="pages.login.register" defaultMessage="Sign Up" />
+            </a>
+
             <a
               style={{
                 float: 'right',
+                textDecoration: 'underline',
               }}
             >
-              <FormattedMessage id="pages.login.forgotPassword" defaultMessage="忘记密码" />
+              <FormattedMessage id="pages.login.forgotPassword" defaultMessage="Forgot password" />
             </a>
           </div>
         </LoginForm>
