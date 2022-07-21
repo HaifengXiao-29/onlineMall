@@ -58,13 +58,13 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
       content: initialState?.currentUser?.name,
     },
     footerRender: () => <Footer />,
-    onPageChange: () => {
-      const { location } = history;
-      // 如果没有登录，重定向到 login
-      if (!initialState?.currentUser && location.pathname !== loginPath) {
-        history.push(loginPath);
-      }
-    },
+    // onPageChange: () => {
+    //   const { location } = history;
+    //   // 如果没有登录，重定向到 login
+    //   if (!initialState?.currentUser && location.pathname !== loginPath) {
+    //     history.push(loginPath);
+    //   }
+    // },
     links: isDev
       ? [
           <Link key="openapi" to="/umi/plugin/openapi" target="_blank">

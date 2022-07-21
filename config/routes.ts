@@ -9,24 +9,17 @@
         component: './user/Login',
       },
       {
-        component: './404',
-      },
-    ],
-  },
-  {
-    path: '/user',
-    layout: false,
-    routes: [
-      {
         name: 'register',
         path: '/user/register',
-        component: './user/register',
+        component: './user/Register',
       },
+
       {
         component: './404',
       },
     ],
   },
+
   {
     path: '/welcome',
     name: 'welcome',
